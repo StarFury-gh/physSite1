@@ -18,24 +18,29 @@
             <button id="lk_btn" onclick="window.location.href='lk.html'">Личный кабинет</button>
         </nav>
     </header>
-    <div class="account_field">
-        <div class="lk-container">
-            <h2>Личный Кабинет</h2>
-            <p><strong>Преподаватель: </strong> <span id="user-login"></span></p>
-            <button onclick="logout()" class="logout-button" id="logout-btn">Выйти</button>
+    <div class="items">
+        <div class="account_field">
+            <div class="lk-container">
+                <h2>Личный Кабинет</h2>
+                <p><strong>Преподаватель: </strong> <span id="user-login"></span></p>
+                <button onclick="logout()" class="logout-button" id="logout-btn">Выйти</button>
+            </div>
         </div>
-    </div>
-    <div class="new_task_field">
-        <div class="lk-container">
-            <form id="myForm" action="">
-                <h2>Добавить задание</h2>
-                <p><strong>Тема: </strong><br> <span><input id="task-theme-input" type="text" required></span></p>
-                <p><strong>Текст задачи: </strong> <span><textarea name="task_text" id="task-text-input" class="text_field" cols="30" rows="20"></textarea></span></p>
-                <button onclick="addTask()" class="add_btn" id="addTaskBtn">Добавить</button>
-            </form>
+        <div class="new_task_field">
+            <div class="lk-container">
+                <form id="myForm" action="">
+                    <h2>Добавить задание</h2>
+                    <p><strong>Тема: </strong><br> <span><input id="task-theme-input" type="text" required></span></p>
+                    <!-- <p><strong>Текст задачи: </strong> <span><textarea name="task_text" id="task-text-input" class="text_field" cols="30" rows="20"></textarea></span></p> -->
+                    <p><strong>Текст задачи: </strong> <span><input type="text" id="task-text-input" class="text_field"></span></p>
+                    <button onclick="addTask()" class="add_btn" id="addTaskBtn">Добавить</button>
+                </form>
+            </div>
+            <h1 class="message" id="messageH"></h1>
         </div>
-        <h1 class="message" id="messageH"></h1>
+        <div class="cont"></div>
     </div>
+    
 </body>
     <script src="scripts/button_logic.js"></script>
     <script src="scripts/lk.js"></script>

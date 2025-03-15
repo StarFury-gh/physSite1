@@ -6,6 +6,7 @@ function findTeacher() {
     const cards = document.getElementById('cardContainer').getElementsByClassName('card');
 
     for (let i = 0; i < cards.length; i++) {
+        
         const cardTeacher = cards[i].getElementsByTagName('h3')[0].innerHTML.toLowerCase()
         if (cardTeacher.includes(filter)) {
             cards[i].style.display = 'block';
@@ -42,6 +43,8 @@ function addCard(data) {
 
     const newCard = document.createElement('div');
     newCard.className = 'card';
+    const aRef = document.createElement('a')
+    aRef.id = 
     newCard.innerHTML = `<h2>${data[1]}</h2>
     <h3>${data[0]}</h3>
     <a>Открыть</a>`;
