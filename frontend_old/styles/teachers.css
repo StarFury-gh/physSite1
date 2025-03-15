@@ -1,0 +1,109 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.button {
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 16px;
+    background-color: #0065d8;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #0042c5;
+}
+.navbar {
+    background-color: #1e1e1e;
+
+    overflow: hidden; /* Убираем обтекание */
+    display: flex; /* Используем Flexbox */
+    justify-content: space-between; /* Распределяем пространство */
+    align-items: center; /* Центрируем элементы по вертикали */
+    padding: 10px; /* Отступы */
+}
+.navbar a {
+    color: white; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+    padding: 14px 20px; /* Отступы */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+.left-links {
+    display: flex; /* Используем Flexbox для левых ссылок */
+}
+.right-links {
+    margin-left: auto; /* Отодвигаем правые ссылки на край */
+}
+.logo{
+    height: 50px;
+    width: 50px;
+}
+#lk-btn{
+    display: none;
+}
+.search-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.search-container input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.add-card-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.add-card-container input {
+    padding: 10px;
+    margin-right: 5px;
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.add-card-container button {
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.add-card-container button:hover {
+    background-color: #0056b3;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+}
+.card a {
+    text-decoration: none;
+    color: #007BFF;
+}
+.card a:hover {
+    text-decoration: underline;
+}
+
+.right-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto; /* Отодвигаем правые ссылки на край */
+}

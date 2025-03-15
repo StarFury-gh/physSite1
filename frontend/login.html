@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>AskQuiZika Вход</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='index.html' " class="button">Главная</button>
+            <button onclick="window.location.href='teacher.html' " class="button">Преподаватели</button>
+            <button onclick="window.location.href='excercises.html' " class="button">Задачи</button>
+            <button id="log_btn" onclick="window.location.href='login.html' " class="button">Войти</button>
+            <button id="reg_btn" onclick="window.location.href='register.html' " class="button">Зарегистрироваться</button>
+            <button id="lk_btn" onclick="window.location.href='lk.html'">Личный кабинет</button>
+        </nav>
+    </header>
+    <div class="field">
+        <div class="login-form">
+            <h2>Авторизация</h2>
+            <input class="input_field" type="text" id="login-auth" placeholder="Введите логин" required>
+            <input class="input_field" type="password" id="password-auth" placeholder="Введите пароль" required>
+            <button type="button" onclick="login()">Войти</button>
+            <div id="login-message"></div>
+        </div>
+        <h2 id="is_successful"></h2>
+    </div>
+</body>
+    <script src="scripts/button_logic.js"></script>
+    <script src="scripts/login.js"></script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/register.css">
+    <title>AskQuiZika Регистрация</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='index.html' " class="button">Главная</button>
+            <button onclick="window.location.href='teacher.html' " class="button">Преподаватели</button>
+            <button onclick="window.location.href='excercises.html' " class="button">Задачи</button>
+            <button id="log_btn" onclick="window.location.href='login.html' " class="button">Войти</button>
+            <button id="reg_btn" onclick="window.location.href='register.html' " class="button">Зарегистрироваться</button>
+            <button id="lk_btn" onclick="window.location.href='lk.html'">Личный кабинет</button>
+        </nav>
+    </header>
+    <div class="field">
+        <div class="register-form">
+            <form id="Form" onsubmit="onSubmit()">
+                <h2>Регистрация</h2>
+                <input class="input_field" type="text" id="login-field" placeholder="Введите логин" required>
+                <input class="input_field" type="password" id="password-field" placeholder="Введите пароль" required>
+                <input class="input_field" type="password" id="token-field" placeholder="Введите идентификатор" required>
+                <button type="submit" onclick="register()">Зарегистрироваться</button>
+            </form>
+        </div>
+        <h2 id="is_successful"></h2>
+    </div>
+</body>
+    <script src="scripts/button_logic.js"></script>
+    <script src="scripts/register.js"></script>
+</html>

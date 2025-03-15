@@ -1,0 +1,49 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.button {
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 16px;
+    background-color: #0065d8;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #0042c5;
+}
+.navbar {
+    background-color: #1e1e1e;
+
+    overflow: hidden; /* Убираем обтекание */
+    display: flex; /* Используем Flexbox */
+    justify-content: space-between; /* Распределяем пространство */
+    align-items: center; /* Центрируем элементы по вертикали */
+    padding: 10px; /* Отступы */
+}
+.navbar a {
+    color: white; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+    padding: 14px 20px; /* Отступы */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+.left-links {
+    display: flex; /* Используем Flexbox для левых ссылок */
+}
+.logo{
+    height: 50px;
+    width: 50px;
+}
+#lk-btn{
+    display: none;
+}
+.right-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto; /* Отодвигаем правые ссылки на край */
+}

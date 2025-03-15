@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/login.css">
+    <title>AskQuiZika вход</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="left-links">
+            <img src="favicon.jpg" alt="logo" class="logo">
+            <a class="button" href="index.html">Главная</a>
+            <a class="button" href="teachers.html">Преподаватели</a>
+            <a class="button" id="left-btn" href="themes.html">Темы</a>
+            <a class="button" id="left-btn" href="tasks.html">Задачи</a>
+        </div>
+        <div class="right-links">
+            <a class="button" href="login.html">Войти</a>
+            <a class="button" href="register.html">Зарегистрироваться</a>
+        </div>
+    </div>
+        <div class="field">
+            <div class="login-form">
+                <h2>Авторизация</h2>
+                <input class="input_field" type="text" id="login-auth" placeholder="Введите логин" required>
+                <input class="input_field" type="password" id="password-auth" placeholder="Введите пароль" required>
+                <button type="button" onclick="login()">Войти</button>
+                <div id="login-message"></div>
+            </div>
+            <h2 id="is_successful"></h2>
+        </div>
+</body>
+<script src="scripts/login.js"></script>
+
+</html>

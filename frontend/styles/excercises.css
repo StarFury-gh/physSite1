@@ -1,0 +1,35 @@
+body{
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+}
+.card a {
+    text-decoration: none;
+    color: #007BFF;
+}
+.card a:hover {
+    text-decoration: underline;
+}
+
+.teacher-theme-card{
+    color: rgb(160, 30, 30);
+}
+.z{
+    color: violet;
+}

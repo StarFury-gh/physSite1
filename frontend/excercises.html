@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/excercises.css">
+    <title>AskQuiZika задачи</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='index.html' " class="button">Главная</button>
+            <button onclick="window.location.href='teacher.html' " class="button">Преподаватели</button>
+            <button onclick="window.location.href='excercises.html' " class="button">Задачи</button>
+            <button id="log_btn" onclick="window.location.href='login.html' " class="button">Войти</button>
+            <button id="reg_btn" onclick="window.location.href='register.html' " class="button">Зарегистрироваться</button>
+            <button id="lk_btn" onclick="window.location.href='lk.html'">Личный кабинет</button>
+        </nav>
+    </header>
+
+    <div class="search-container">
+        <h1>Задачи</h1>
+        <input placeholder="Тема" type="text" id="theme">
+        <input placeholder="Преподаватель" type="text" id="teacher">
+    </div>
+    <div class="container" id="cardContainer">
+        <div class="card">
+            <h2>Кинематика</h2>
+            <h3 class="teacher-theme-card">Создано AskQuiZika </h3>
+            <a onclick="alert(this.id)" href="http://example.com/profile/ivanov" id="1">Открыть</a>
+        </div>
+        <div class="card">
+            <h2>Термодинамика</h2>
+            <h3 class="teacher-theme-card">Создано AskQuiZika</h3>
+            <a href="http://example.com/profile/petrova">Открыть</a>
+        </div>
+        <div class="card">
+            <h2>МКТ</h2>
+            <h3 class="teacher-theme-card">Создано AskQuiZika</h3>
+            <a href="http://example.com/profile/sidorov">Открыть</a>
+        </div>
+        <div class="card">
+            <h2>Электростатика</h2>
+            <h3 class="teacher-theme-card">Создано AskQuiZika </h3>
+            <a href="http://example.com/profile/kuznetsova">Открыть</a>
+        </div>
+    </div>
+</body>
+    <script src="scripts/button_logic.js"></script>
+    <script src="scripts/excercises.js"></script>
+</html>
