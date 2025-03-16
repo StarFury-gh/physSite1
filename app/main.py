@@ -122,7 +122,7 @@ def get_tasks():
     try:
         conn = sqlite3.connect(config.db_name)
         cursor = conn.cursor()
-        data = cursor.execute("SELECT author, theme, text FROM excercises").fetchall()
+        data = cursor.execute("SELECT author, theme, text, id FROM excercises").fetchall()
         return {"status": True, "tasks": data}
     except:
         return {"status": False}
@@ -132,7 +132,7 @@ def get_task_by_id(id):
     try:
         conn = sqlite3.connect(config.db_name)
         cursor = conn.cursor()
-        task = cursor.execute(f"SELECT * FROM excercises WHERE (id={id})").fetchall()
+        task = cursor.execute(f"SELECT * FROM excercises WHERE (id={id})").fetchone()
         print(f"TASK = {task}")
         if task:
             return {"status": True, "task_info": task}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/task.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='index.html' " class="button">Главная</button>
+            <button onclick="window.location.href='teacher.html' " class="button">Преподаватели</button>
+            <button onclick="window.location.href='excercises.html' " class="button">Задачи</button>
+            <button id="log_btn" onclick="window.location.href='login.html' " class="button">Войти</button>
+            <button id="reg_btn" onclick="window.location.href='register.html' " class="button">Зарегистрироваться</button>
+            <button id="lk_btn" onclick="window.location.href='lk.html'">Личный кабинет</button>
+        </nav>
+    </header>
+    <div class="items">
+        <div class="task-container">
+            <p class="text" id="teacher">Преподаватель: </p>
+            <p class="text" id="theme">Тема: </p>
+            <p class="text" id="task">Задание: <br></p>
+        </div>
+    </div>
+</body>
+    <script src="scripts/button_logic.js"></script>
+    <script src="scripts/task.js"></script>
+</html>

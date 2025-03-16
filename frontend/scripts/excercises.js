@@ -1,5 +1,7 @@
 const URL = "http://127.0.0.1:8000"
 
+console.log(sessionStorage.getItem("taskID"))
+
 function findTeacher() {
     const input = document.getElementById('teacher');
     const filter = input.value.toLowerCase();
@@ -37,19 +39,23 @@ const themeField = document.getElementById('theme')
 teacherField.addEventListener('keyup', () => findTeacher())
 themeField.addEventListener('keyup', () => findTheme())
 
+const setTask = (id) => {
+    sessionStorage.setItem("taskID", id)
+    // console.log(sessionStorage.getItem("taskID"))
+}
+
 function addCard(data) {
 
-    const cardContainer = document.getElementById('cardContainer');
+    const cardContainer = document.getElementById('cardContainer')
 
-    const newCard = document.createElement('div');
+    const newCard = document.createElement('div')
     newCard.className = 'card';
-    const aRef = document.createElement('a')
-    aRef.id = 
-    newCard.innerHTML = `<h2>${data[1]}</h2>
+    newCard.innerHTML = `
+    <h2>${data[1]}</h2>
     <h3>${data[0]}</h3>
-    <a>Открыть</a>`;
-
-    cardContainer.appendChild(newCard);
+    <a class='aTag' id='${data[3]}' onclick='setTask(this.id)' href='task.html'>Открыть</a>
+    `
+    cardContainer.appendChild(newCard)
 
 }
 
@@ -72,4 +78,6 @@ window.addEventListener("load", () => {
 
     })
 
+
 })
+
