@@ -42,7 +42,7 @@ teacherField.addEventListener('keyup', () => findTeacher())
 themeField.addEventListener('keyup', () => findTheme())
 
 
-//для использования чуть ниже (58 строка)
+//для использования чуть ниже (61 строка)
 const setTask = (id) => {
     sessionStorage.setItem("taskID", id)
     // console.log(sessionStorage.getItem("taskID"))

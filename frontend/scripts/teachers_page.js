@@ -26,7 +26,11 @@ function findNecessaryTeacher() {
 const inputField = document.getElementById('searchInput')
 inputField.addEventListener('keyup', () => findNecessaryTeacher())
 
-function addCard(data) {
+const setTeacher = (id) => {
+    sessionStorage.setItem("necessaryTeacher", id)
+}
+
+function addCard(id, name) {
 
     const cardContainer = document.getElementById('cardContainer');
 
@@ -40,8 +44,8 @@ function addCard(data) {
     const newCard = document.createElement('div')
     newCard.className = 'card';
     newCard.innerHTML = `
-    <h2>${data[1]}</h2>
-    <a class='aTag' id='${data[3]}' onclick='setTask(this.id)' href='task.html'>Открыть</a>
+    <h2>${name}</h2>
+    <a class='aTag' id='${id}' onclick='setTeacher(this.id)' href='teacherPage.html'>Открыть</a>
     `
     cardContainer.appendChild(newCard)
 
@@ -58,18 +62,19 @@ window.addEventListener("load", () => {
         fetch(`${URL}/get_teachers`)
         .then(async(response) => await response.json())
         .then((data) => {
+            console.log(data)
             if(data["status"]){
-
-                for(let i = 0; i < data["teachers"].length; i++){
-
-                    addCard(data["teachers"][i])
-
+                for(let i = 0; i < data["data"].length; i++){
+                    //id name
+                    // console.log(data["data"][i][0])
+                    // console.log("--------------------------------")
+                    // console.log(data["data"][i][1])
+                    addCard(data["data"][i][0], data["data"][i][1])
                 }
-
-            } else {
-                alert("Ошибка. Преподаватели не добавлены.")
             }
-
+            else{
+                alert("Ошибка загрузки профилей.")
+            }
         })
     }
     catch{
