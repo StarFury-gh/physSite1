@@ -2,6 +2,8 @@ const URL = "http://127.0.0.1:8000"
 
 console.log(sessionStorage.getItem("taskID"))
 
+
+//функции для поиска
 function findTeacher() {
     const input = document.getElementById('teacher');
     const filter = input.value.toLowerCase();
@@ -39,11 +41,14 @@ const themeField = document.getElementById('theme')
 teacherField.addEventListener('keyup', () => findTeacher())
 themeField.addEventListener('keyup', () => findTheme())
 
+
+//для использования чуть ниже (58 строка)
 const setTask = (id) => {
     sessionStorage.setItem("taskID", id)
     // console.log(sessionStorage.getItem("taskID"))
 }
 
+//ну тут понятно чо она делает
 function addCard(data) {
 
     const cardContainer = document.getElementById('cardContainer')
@@ -59,6 +64,8 @@ function addCard(data) {
 
 }
 
+
+//при загрузке страницы добавляем карточки
 window.addEventListener("load", () => {
 
     fetch(`${URL}/get_tasks`)

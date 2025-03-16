@@ -7,6 +7,8 @@ import utils
 import json
 from schemas import Task
 
+#ну тут функции называются вроде так, что они делают, так что комментарии с пояснением работы функции будут редкими
+
 app = FastAPI()
 
 origins = ["*"]
@@ -19,6 +21,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+#ну написано тестовая функция
 @app.get("/")
 async def test():
     return {"message": "hello"}
@@ -46,6 +49,7 @@ async def login(user, password) -> dict:
             "info": "no user in DataBase"
         }
 
+#тут по-хорошему переделать на Pydantic схему, но мне лень
 @app.post("/register/{user}/{password}/{validation_code}")
 async def register(user, password, validation_code) -> dict:
     if(validation_code == 'teacher_account'):    
@@ -98,6 +102,16 @@ def get_teachers() -> dict:
             "info": "no teachers yet."
         }
 
+@app.get("/get_teacher_by_id/{id}")
+def get_teacher_by_id(id: int):
+    conn = sqlite3.connect(config.db_name)
+    cursor = conn.cursor()
+    necessary_teacher = cursor.execute(f"SELECT login FROM excercises WHERE id={id}").fetchone()
+    if necessary_teacher:
+        return {"status": True, "teacher": necessary_teacher}
+    return {"status": False, "info": "No teacher with this id"}
+
+#ну тут уже юзаю Pydantic
 @app.post("/add_task")
 def add_task(task: Task) -> dict:
     

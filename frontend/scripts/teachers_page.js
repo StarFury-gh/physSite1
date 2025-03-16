@@ -2,6 +2,7 @@ const URL = "http://127.0.0.1:8000"
 
 const data1 = localStorage.getItem("teacher_page")
 
+//для поиска
 function findNecessaryTeacher() {
     const input = document.getElementById('searchInput');
     const filter = input.value.toLowerCase();
@@ -17,22 +18,40 @@ function findNecessaryTeacher() {
     }
 }
 
+
+
+
+
+//для добавления
 const inputField = document.getElementById('searchInput')
 inputField.addEventListener('keyup', () => findNecessaryTeacher())
 
-function addCard(name) {
+function addCard(data) {
 
     const cardContainer = document.getElementById('cardContainer');
 
-    const newCard = document.createElement('div');
-    newCard.className = 'card';
-    newCard.innerHTML = `<h2>${name}</h2>
-                         <a href="${name}" target="_blank">Профиль</a>`;
+    // const newCard = document.createElement('div');
+    // newCard.className = 'card';
+    // newCard.innerHTML = `<h2>${data}</h2>
+    //                      <a href="teacherPage.html" target="_blank">Профиль</a>`;
 
-    cardContainer.appendChild(newCard);
+    // cardContainer.appendChild(newCard);
+
+    const newCard = document.createElement('div')
+    newCard.className = 'card';
+    newCard.innerHTML = `
+    <h2>${data[1]}</h2>
+    <a class='aTag' id='${data[3]}' onclick='setTask(this.id)' href='task.html'>Открыть</a>
+    `
+    cardContainer.appendChild(newCard)
 
 }
 
+
+
+
+
+//добавление карточек преподов из бдшки
 window.addEventListener("load", () => {
 
     try{
@@ -58,8 +77,3 @@ window.addEventListener("load", () => {
     }
 
 })
-
-const getTeacherPage = () => {
-    const id = event.target.id
-    localStorage.setItem("teacher_page", id)
-}
