@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты по кинематике</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/tests.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='../index.html'" class="button">Главная</button>
+            <button onclick="window.location.href='../teacher.html'" class="button">Преподаватели</button>
+            <button onclick="window.location.href='../excercises.html'" class="button">Задачи</button>
+            <button id="log_btn" onclick="window.location.href='../login.html'" class="button">Войти</button>
+            <button id="reg_btn" onclick="window.location.href='../register.html'" class="button">Зарегистрироваться</button>
+            <button id="lk_btn" onclick="window.location.href='../lk.html'">Личный кабинет</button>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Тесты по кинематике</h1>
+
+        <div class="question">
+            <h2>Уровень A</h2>
+            <p>Автобус везет пассажиров по прямой дороге со скоростью 15 м/с. Пассажир равномерно идет по салону автобуса со скоростью 1 м/с относительно автобуса, двигаясь от задней двери к кабине водителя. Чему равен модуль скорости пассажира относительно дороги? Ответ дайте в метрах в секунду.</p>
+            <input type="text" id="answerA" placeholder="Ваш ответ">
+            <span id="correctAnswerA" class="correct-answer"></span>
+        </div>
+
+        <div class="question">
+            <h2>Уровень B</h2>
+            <p>Стрела выпущена из лука вертикально вверх со скоростью 10 м/с. На какую максимальную высоту она поднимется? Ответ дайте в метрах.</p>
+            <input type="text" id="answerB" placeholder="Ваш ответ">
+            <span id="correctAnswerB" class="correct-answer"></span>
+        </div>
+
+        <div class="question">
+            <h2>Уровень C</h2>
+            <p>Два маленьких тела бросают вертикально вверх из одной точки через промежуток 3 с со скоростями 20 м/с и 10 м/с соответственно. На какой высоте тела столкнутся? Сопротивлением воздуха можно пренебречь. Ответ дайте в метрах, округлите до десятых, дробную часть отделяйте точкой.</p>
+            <input type="text" id="answerC" placeholder="Ваш ответ">
+            <span id="correctAnswerC" class="correct-answer"></span>
+        </div>
+
+        <button onclick="checkAnswers(correctAnswers)" class="check-button">Проверить</button>
+
+        <div id="result"></div>
+
+        <button id="backButton" onclick="window.location.href='../excercises.html'" class="back-button">Вернуться к другим задачам</button>
+    </main>
+
+    <script src="../scripts/tests.js"></script>
+    <script src="../scripts/button_logic.js"></script>
+    <script>
+        const correctAnswers = {
+            A: "16",
+            B: "5",
+            C: "4.7"
+        };
+    </script>
+</body>
+</html>

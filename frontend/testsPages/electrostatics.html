@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты по электростатике</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/tests.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='../index.html'" class="button">Главная</button>
+            <button onclick="window.location.href='../teacher.html'" class="button">Преподаватели</button>
+            <button onclick="window.location.href='../excercises.html'" class="button">Задачи</button>
+            <button id="log_btn" onclick="window.location.href='../login.html'" class="button">Войти</button>
+            <button id="reg_btn" onclick="window.location.href='../register.html'" class="button">Зарегистрироваться</button>
+            <button id="lk_btn" onclick="window.location.href='../lk.html'">Личный кабинет</button>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Тесты по электростатике</h1>
+
+        <div class="question">
+            <h2>Уровень A</h2>
+            <p>Два одинаковых точечных заряда на расстоянии 18 м в вакууме отталкиваются с силой 0,1 Н. Чему равна величина заряда. Ответ дайте в микрокулонах.</p>
+            <input type="text" id="answerA" placeholder="Ваш ответ">
+            <span id="correctAnswerA" class="correct-answer"></span>
+        </div>
+
+        <div class="question">
+            <h2>Уровень B</h2>
+            <p>Полый шарик массой 0,4 г с зарядом 8 нКл движется в горизонтальном однородном электрическом поле, угол траектории равен 45°. Найдите чему равна напряженность электрического поля. Ответ дайте в киловольтах на метр.</p>
+            <input type="text" id="answerB" placeholder="Ваш ответ">
+            <span id="correctAnswerB" class="correct-answer"></span>
+        </div>
+
+        <div class="question">
+            <h2>Уровень C</h2>
+            <p>Три маленьких одинаково заряженных шарика массой 4 г каждый подвешены на шелковых нитях длиной 1 м. Верхние концы нитей закреплены в одной точке. Расстояние от каждого шарика до двух других одинаково 5 см. Каков заряд каждого шарика? Ответ дайте в пикокулонах.</p>
+            <input type="text" id="answerC" placeholder="Ваш ответ">
+            <span id="correctAnswerC" class="correct-answer"></span>
+        </div>
+
+        <button onclick="checkAnswers(correctAnswers)" class="check-button">Проверить</button>
+
+        <div id="result"></div>
+
+        <button id="backButton" onclick="window.location.href='../excercises.html'" class="back-button">Вернуться к другим задачам</button>
+    </main>
+
+    <script src="../scripts/tests.js"></script>
+    <script src="../scripts/button_logic.js"></script>
+    <script>
+        const correctAnswers = {
+            A: "60",
+            B: "13608",
+            C: "..."
+        };
+    </script>
+</body>
+</html>

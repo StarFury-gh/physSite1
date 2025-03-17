@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты по термодинамике</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/tests.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='../index.html'" class="button">Главная</button>
+            <button onclick="window.location.href='../teacher.html'" class="button">Преподаватели</button>
+            <button onclick="window.location.href='../excercises.html'" class="button">Задачи</button>
+            <button id="log_btn" onclick="window.location.href='../login.html'" class="button">Войти</button>
+            <button id="reg_btn" onclick="window.location.href='../register.html'" class="button">Зарегистрироваться</button>
+            <button id="lk_btn" onclick="window.location.href='../lk.html'">Личный кабинет</button>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Тесты по термодинамике</h1>
+
+        <div class="question">
+            <h2>Уровень A</h2>
+            <p>Каково изменение внутренней энергии газа, если ему передано количество теплоты 300 Дж, а внешние силы совершили над ним работу 500 Дж? Ответ дайте в джоулях.</p>
+            <input type="text" id="answerA" placeholder="Ваш ответ">
+            <span id="correctAnswerA" class="correct-answer"></span>
+        </div>
+
+        <div class="question">
+            <h2>Уровень B</h2>
+            <p>Определить количество молекул, содержащихся в газе объёмом 1×10⁻¹⁶ мм³ при давлении 0,1 МПа и температуре 293 К. Ответ округлите до целых.</p>
+            <input type="text" id="answerB" placeholder="Ваш ответ">
+            <span id="correctAnswerB" class="correct-answer"></span>
+        </div>
+
+        <div class="question">
+            <h2>Уровень C</h2>
+            <p>При сжатии идеального одноатомного газа при постоянном давлении внешние силы совершили работу 2000 Дж. Какое количество теплоты было передано при этом газом окружающим телам? Ответ дайте в килоджоулях.</p>
+            <input type="text" id="answerC" placeholder="Ваш ответ">
+            <span id="correctAnswerC" class="correct-answer"></span>
+        </div>
+
+        <button onclick="checkAnswers(correctAnswers)" class="check-button">Проверить</button>
+
+        <div id="result"></div>
+
+        <button id="backButton" onclick="window.location.href='../excercises.html'" class="back-button">Вернуться к другим задачам</button>
+    </main>
+
+    <script src="../scripts/tests.js"></script>
+    <script src="../scripts/button_logic.js"></script>
+    <script>
+        const correctAnswers = {
+            A: "800",
+            B: "2",
+            C: "5"
+        };
+    </script>
+</body>
+</html>

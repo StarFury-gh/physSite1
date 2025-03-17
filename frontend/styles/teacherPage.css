@@ -18,8 +18,12 @@
 .card a {
     text-decoration: none;
     color: #007BFF;
+    /* color: red; */
 }
 .card a:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+#info{
+    display: none;
 }

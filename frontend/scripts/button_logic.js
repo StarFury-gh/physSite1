@@ -1,6 +1,6 @@
 // localStorage.setItem("current_user", "vova")
 
-const current_user = localStorage.getItem("current_user")
+const current_user = sessionStorage.getItem("current_user")
 // console.log(current_user)
 
 if(current_user !== ""){
