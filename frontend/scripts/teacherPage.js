@@ -17,7 +17,7 @@ const setTeacherProfile = () => {
 
 const setTask = (id) => {
     sessionStorage.setItem("taskID", id)
-    // console.log(sessionStorage.getItem("taskID"))
+    //console.log(sessionStorage.getItem("taskID"))
 }
 
 function addCard(data) {
@@ -28,6 +28,7 @@ function addCard(data) {
     newCard.className = 'card';
     newCard.innerHTML = `
     <h2>${data[1]}</h2>
+    <h3>№ ${data[0]}</h3>
     <a class='aTag' id='${data[0]}' onclick='setTask(this.id)' href='task.html'>Открыть</a>
     `
     cardContainer.appendChild(newCard)
@@ -81,8 +82,23 @@ function findTheme() {
 
 }
 
+function findTask() {
+    const input_task = document.getElementById('taskField');
+    const filter_task = input_task.value.toLowerCase();
+    const cards = document.getElementById('cardContainer').getElementsByClassName('card');
+    for (let i = 0; i < cards.length; i++) {
+        const cardText = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        if (cardText.includes(filter_task)) {
+            cards[i].style.display = 'block';
+        } else {
+            cards[i].style.display = 'none';
+        }
+    }
+}
+
 const themeField = document.getElementById('themeField')
 themeField.addEventListener('keyup', () => findTheme())
+taskField.addEventListener('keyup', () => findTask())
 
 window.addEventListener("load", () => {
     setTeacherProfile()
