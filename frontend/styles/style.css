@@ -40,6 +40,23 @@ main {
     text-align: center;
 }
 
+.info{
+    h1{
+        position: absolute;
+        width: 1798px;
+        height: 79px;
+
+        font-family: 'Arial';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 64px;
+        line-height: 74px;
+        letter-spacing: -0.02em;
+
+        color: #000000;
+    }
+}
+
 /* Стили для мобильных устройств (ширина экрана до 600px) */
 @media (max-width: 600px) {
     nav {

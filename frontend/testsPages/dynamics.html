@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты по динамике</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/tests.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <button onclick="window.location.href='../index.html'" class="button">Главная</button>
+            <button onclick="window.location.href='../teacher.html'" class="button">Преподаватели</button>
+            <button onclick="window.location.href='../excercises.html'" class="button">Задачи</button>
+            <button id="log_btn" onclick="window.location.href='../login.html'" class="button">Войти</button>
+            <button id="reg_btn" onclick="window.location.href='../register.html'" class="button">Зарегистрироваться</button>
+            <button id="lk_btn" onclick="window.location.href='../lk.html'">Личный кабинет</button>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Тесты по динамике</h1>
+
+        <div class="question">
+            <h2>Уровень A</h2>
+            <p>По горизонтальному столу с помощью пружины равномерно тянут брусок. Определите коэффициент трения между столом и бруском, если пружина во время опыта растягивается на 8 см. Масса бруска 6 кг, жесткость пружины 300 Н/м.</p>
+            <input type="text" id="answerA" placeholder="Ваш ответ">
+            <span id="correctAnswerA" class="correct-answer"></span>
+        </div>
+
+        <div class="question">
+            <h2>Уровень B</h2>
+            <p>Тело находится у основания наклонной плоскости с углом при основании 30°. Коэффициент трения о поверхность равен 0,6 и масса тела 2 кг. Сколько времени тело будет двигаться по наклонной плоскости, если его толкнуть вверх вдоль плоскости со скоростью 20 м/с? Ответ дайте в секундах.</p>
+            <input type="text" id="answerB" placeholder="Ваш ответ">
+            <span id="correctAnswerB" class="correct-answer"></span>
+        </div>
+
+        <div class="question">
+            <h2>Уровень C</h2>
+            <p>Пластилиновый шарик массой 0.5 кг, подвешенный на нити длиной 0.8 м, отводят в сторону и отпускают. В нижней точке качения шарик налетает на покоящийся брусок. В результате абсолютно неупругого соударения брусок приобретает скорость 0.4 м/с. Определите массу бруска, если в момент столкновения натяжение нити было 8,6 Н. Ответ дайте в килограммах.</p>
+            <input type="text" id="answerC" placeholder="Ваш ответ">
+            <span id="correctAnswerC" class="correct-answer"></span>
+        </div>
+
+        <button onclick="checkAnswers(correctAnswers)" class="check-button">Проверить</button>
+
+        <div id="result"></div>
+
+        <button id="backButton" onclick="window.location.href='../excercises.html'" class="back-button">Вернуться к другим задачам</button>
+    </main>
+
+    <script src="../scripts/tests.js"></script>
+    <script src="../scripts/button_logic.js"></script>
+    <script>
+        const correctAnswers = {
+            A: "0.4",
+            B: "2",
+            C: "2.5"
+        };
+    </script>
+</body>
+</html>

@@ -7,8 +7,7 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
 const addTask = () => {
     const taskText = document.getElementById("task-text-input").value
     const taskTheme = document.getElementById("task-theme-input").value
-    const teacher = localStorage.getItem("current_user")
-
+    const teacher = sessionStorage.getItem("current_user")
     if(!!taskText && !!taskTheme && !!teacher){
 
         try{
@@ -34,16 +33,16 @@ const addTask = () => {
     
         }
         catch{
-            const messageH = document.getElementById("message")
+            const messageH = document.getElementById("messageH")
             messageH.style.display = "block"
             messageH.style.color = "red"
-            messageH.innerHTML = "Ошбика добавления."
+            messageH.innerHTML = "Ошибка добавления."
         }
     } else {
-        const messageH = document.getElementById("message")
+        const messageH = document.getElementById("messageH")
         messageH.style.display = "block"
         messageH.style.color = "red"
-        messageH.innerHTML = "Ошбика добавления."
+        messageH.innerHTML = "Ошибка добавления."
     }
 
 }

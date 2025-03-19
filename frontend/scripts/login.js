@@ -19,8 +19,7 @@ const login = async () => {
                     statusElement.style.display = "block"
                     statusElement.style.color = "green";
                     statusElement.innerHTML = "Вы успешно авторизированы.<br>Вы будете переадресованы на главную страницу."
-                    localStorage.setItem("current_user", login)
-
+                    sessionStorage.setItem("current_user", login)
                     setTimeout(() => {
                         window.location.href = "./index.html"
                     }, 3000)

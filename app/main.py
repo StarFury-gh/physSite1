@@ -154,7 +154,6 @@ def get_task_by_id(id):
         conn = sqlite3.connect(config.db_name)
         cursor = conn.cursor()
         task = cursor.execute(f"SELECT * FROM excercises WHERE (id={id})").fetchone()
-        print(f"TASK = {task}")
         if task:
             return {"status": True, "task_info": task}
         return {"status": False, "info": "No task with this ID"}
@@ -162,16 +161,22 @@ def get_task_by_id(id):
         return {"status": False, "info": "Server error"}
     
 @app.get("/get_tasks_by_teacher/{teacher}")
-def get_tasks_by_teacher(teacher: str):
-    try:
-        conn = sqlite3.connect(config.db_name)
-        cursor = conn.cursor()
-        tasks = cursor.execute(f"SELECT theme FROM excercises WHERE author='{teacher}'").fetchall()
-        if tasks:
-            return {"status": True, "tasks": tasks}
-        return {"status": False, "info": "No tasks by this teacher"}
-    except:
-        return {"status": False, "info": "Server Error"}
+def get_tasks_by_teacher(teacher):
+# try:
+    conn = sqlite3.connect(config.db_name)
+    cursor = conn.cursor()
+    teachersName = cursor.execute(f"SELECT login FROM users WHERE id={int(teacher)}").fetchone()
+    # tasks = cursor.execute(f"SELECT id, theme FROM excercises WHERE (author='{teachersName}')").fetchall()
+    # picked_data = cursor.execute(f"SELECT * FROM excercises WHERE (author='{teachersName}')").fetchall()
+    tasks = cursor.execute(f"SELECT id, theme FROM excercises WHERE (author='{teachersName[0]}')").fetchall()
+    
+    print(teachersName)
+    print(tasks)
+    if tasks:
+        return {"status": True, "tasks": tasks}
+    return {"status": False, "info": "No tasks by this teacher"}
+# except:
+    # return {"status": False, "info": "Server Error"}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", port=8000, host="127.0.0.1")
