@@ -40,7 +40,7 @@ main {
     text-align: center;
 }
 
-.info{
+/* .info{
     h1{
         position: absolute;
         width: 1798px;
@@ -55,6 +55,19 @@ main {
 
         color: #000000;
     }
+} */
+
+.info{
+    h1{
+        color: rgb(61, 61, 61);
+    }
+    a{
+        color: rgb(55, 55, 230);
+        transition: .3s;
+    }
+    a:hover{
+        color: blue;
+    }
 }
 
 /* Стили для мобильных устройств (ширина экрана до 600px) */
@@ -67,7 +80,7 @@ main {
     button {
         width: 80%;
         margin: 5px 0;
-        font-size: 30px;
+        font-size: 25px;
         font-style: bold;
     }
 }

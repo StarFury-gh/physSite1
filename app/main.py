@@ -179,5 +179,5 @@ def get_tasks_by_teacher(teacher):
     # return {"status": False, "info": "Server Error"}
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", port=8000, host="127.0.0.1")
+    uvicorn.run("main:app", port=8000, host="0.0.0.0")
 
