@@ -6,6 +6,7 @@ import uvicorn
 import utils
 import json
 from schemas import Task
+from async_lru import alru_cache
 
 #ну тут функции называются вроде так, что они делают, так что комментарии с пояснением работы функции будут редкими
 
@@ -83,24 +84,10 @@ async def register(user, password, validation_code) -> dict:
             "info": "incorrect validation code"
         }
 
+@alru_cache(maxsize=32)
 @app.get("/get_teachers")
 def get_teachers() -> dict:
-    # conn = sqlite3.connect(config.db_name)
-    # cursor = conn.cursor()
-    # teachers = cursor.execute("SELECT login FROM users").fetchall()
-    # result = [el[0] for el in list(teachers)]
-    # if(utils.isExists(result)):
-    #     return {
-    #         "status": True,
-    #         "code": 200,
-    #         "teachers": result
-    #     }
-    # else:
-    #     return {
-    #         "status": False,
-    #         "code": 400,
-    #         "info": "no teachers yet."
-    #     }
+
     conn = sqlite3.connect(config.db_name)
     cursor = conn.cursor()
     teachers = cursor.execute("SELECT id, login FROM users").fetchall()
@@ -109,6 +96,7 @@ def get_teachers() -> dict:
         return {"status": True, "data":teachers}
     return {"status": False, "info":"No teachers in DataBase"}
 
+@alru_cache(maxsize=32)
 @app.get("/get_teacher_by_id/{id}")
 def get_teacher_by_id(id: int):
     conn = sqlite3.connect(config.db_name)
@@ -129,7 +117,6 @@ def add_task(task: Task) -> dict:
         print(task_theme, task_text, task_teacher, sep="\t")
         conn = sqlite3.connect(config.db_name)
         cursor = conn.cursor()
-        #cursor.execute(f"INSERT INTO excercises (author, text, theme) VALUES(author='{task_teacher}', text='{task_text}', theme='{task_theme}')")
         cursor.execute(f"INSERT INTO excercises (author, text, theme) VALUES ('{task_teacher}', '{task_text}', '{task_theme}')")
         conn.commit()
         return {"status": True}
@@ -138,8 +125,9 @@ def add_task(task: Task) -> dict:
         print(e)
         return {"status": False, "info": "Server error."}
 
+@alru_cache(maxsize=32)
 @app.get("/get_tasks")
-def get_tasks():
+async def get_tasks():
     try:
         conn = sqlite3.connect(config.db_name)
         cursor = conn.cursor()
@@ -160,23 +148,17 @@ def get_task_by_id(id):
     except:
         return {"status": False, "info": "Server error"}
     
+@alru_cache(maxsize=32)
 @app.get("/get_tasks_by_teacher/{teacher}")
-def get_tasks_by_teacher(teacher):
-# try:
+async def get_tasks_by_teacher(teacher):
     conn = sqlite3.connect(config.db_name)
     cursor = conn.cursor()
     teachersName = cursor.execute(f"SELECT login FROM users WHERE id={int(teacher)}").fetchone()
-    # tasks = cursor.execute(f"SELECT id, theme FROM excercises WHERE (author='{teachersName}')").fetchall()
-    # picked_data = cursor.execute(f"SELECT * FROM excercises WHERE (author='{teachersName}')").fetchall()
     tasks = cursor.execute(f"SELECT id, theme FROM excercises WHERE (author='{teachersName[0]}')").fetchall()
     
-    print(teachersName)
-    print(tasks)
     if tasks:
         return {"status": True, "tasks": tasks}
     return {"status": False, "info": "No tasks by this teacher"}
-# except:
-    # return {"status": False, "info": "Server Error"}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", port=8000, host="0.0.0.0")

@@ -8,5 +8,6 @@ COPY . .
 # RUN python
 # RUN source bin/venv/activate
 RUN pip install fastapi uvicorn
+RUN pip install async-lru
 
 CMD ["python", "main.py"]
