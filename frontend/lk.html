@@ -10,11 +10,11 @@
 <body>
     <header>
         <nav>
-            <button onclick="window.location.href='index.html' " class="button">Главная</button>
-            <button onclick="window.location.href='teacher.html' " class="button">Преподаватели</button>
-            <button onclick="window.location.href='excercises.html' " class="button">Задачи</button>
-            <button id="log_btn" onclick="window.location.href='login.html' " class="button">Войти</button>
-            <button id="reg_btn" onclick="window.location.href='register.html' " class="button">Зарегистрироваться</button>
+            <button onclick="window.location.href='index.html'" class="button">Главная</button>
+            <button onclick="window.location.href='teacher.html'" class="button">Преподаватели</button>
+            <button onclick="window.location.href='excercises.html'" class="button">Задачи</button>
+            <button id="log_btn" onclick="window.location.href='login.html'" class="button">Войти</button>
+            <button id="reg_btn" onclick="window.location.href='register.html'" class="button">Зарегистрироваться</button>
             <button id="lk_btn" onclick="window.location.href='lk.html'">Личный кабинет</button>
         </nav>
     </header>
@@ -31,9 +31,13 @@
                 <form id="myForm" action="">
                     <h2>Добавить задание</h2>
                     <p><strong>Тема: </strong><br> <span><input id="task-theme-input" type="text" required></span></p>
-                    <!-- <p><strong>Текст задачи: </strong> <span><textarea name="task_text" id="task-text-input" class="text_field" cols="30" rows="20"></textarea></span></p> -->
                     <p><strong>Текст задачи: </strong> <span><input type="text" id="task-text-input" class="text_field"></span></p>
                     <button onclick="addTask()" class="add_btn" id="addTaskBtn">Добавить</button>
+                </form>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <h2>Загрузить изображение</h2>
+                    <p><strong>Файл: </strong><input type="file" id="image-input" accept="image/*" required></p>
+                    <button onclick="uploadImage(event)" class="add_btn">Загрузить</button>
                 </form>
             </div>
             <h1 class="message" id="messageH"></h1>
@@ -41,8 +45,8 @@
         <div class="cont"></div>
     </div>
     
-</body>
     <script src="scripts/button_logic.js"></script>
     <script src="scripts/lk.js"></script>
     <script src="scripts/add_task.js"></script>
+</body>
 </html>

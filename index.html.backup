@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация и Логин</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login-modal')">&times;</span>
+            <h2>Авторизация</h2>
+            <input type="text" id="login-auth" placeholder="Введите логин" required>
+            <input type="password" id="password-auth" placeholder="Введите пароль" required>
+            <button onclick="handleLogin()">Войти</button>
+            <div id="login-message"></div>
+        </div>
+    </div>
+
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('register-modal')">&times;</span>
+            <h2>Регистрация</h2>
+            <input type="text" id="login" placeholder="Введите логин" required>
+            <input type="password" id="password" placeholder="Введите пароль" required>
+            <button onclick="handleRegister()">Зарегистрироваться</button>
+            <div id="register-message"></div>
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <a href="#" class="button">Преподаватели</a>
+        <a href="#" class="button">Темы</a>
+        <a href="#" class="button">Задачи</a>
+        <a href="#" class="button" id="open-register">Зарегистрироваться</a>
+        <a href="#" class="button" id="open-login">Войти</a>
+    </div>
+    
+    <!-- <div class="cont">
+        <div id="register-form">
+            <h2>Регистрация</h2>
+            <input type="text" id="login" placeholder="Введите логин" required>
+            <input type="password" id="password" placeholder="Введите пароль" required>
+            <button onclick="handleRegister()">Зарегистрироваться</button>
+            <div id="message"></div>
+        </div>
+    
+        <div id="login-form">
+            <h2>Авторизация</h2>
+            <input type="text" id="login-auth" placeholder="Введите логин" required>
+            <input type="password" id="password-auth" placeholder="Введите пароль" required>
+            <button onclick="handleLogin()">Войти</button>
+            <div id="message"></div>
+        </div> -->
+        
+    </div>
+</body>
+    <script src="script.js"></script>
+</html>

@@ -1,53 +1,42 @@
-// const current_user = localStorage.getItem("current_user")
-const URL = "http://127.0.0.1:8000"
-
 const login = async () => {
+    const loginValue = document.getElementById("login-auth").value;
+    const password = document.getElementById("password-auth").value;
+    const statusElement = document.getElementById("is_successful");
 
-    const login = document.getElementById("login-auth").value
-    const password = document.getElementById("password-auth").value
+    if (loginValue && password) {
+        try {
+            const response = await fetch(`/login/${loginValue}/${password}`);
+            const data = await response.json();
 
-    // statusElement.style.display = "block"
-
-    if(!!login && !!password){
-        try{
-            fetch(`${URL}/login/${login}/${password}`)
-            .then(async(response) => await response.json())
-            .then((data) => {
-                if(data["status"]){
-                    const statusElement = document.getElementById("is_successful")
-    
-                    statusElement.style.display = "block"
-                    statusElement.style.color = "green";
-                    statusElement.innerHTML = "Вы успешно авторизированы.<br>Вы будете переадресованы на главную страницу."
-                    sessionStorage.setItem("current_user", login)
-                    setTimeout(() => {
-                        window.location.href = "./index.html"
-                    }, 3000)
-
-                } else {
-                    const statusElement = document.getElementById("is_successful")
-                    
-                    statusElement.style.display = "block"
-                    statusElement.style.color = "red";
-                    statusElement.innerHTML = "Неверный логин или пароль."
-    
-                }
-    
-            })
-        
-        }
-        catch{
-            const statusElement = document.getElementById("is_successful")
-            statusElement.style.display = "block"
-            statusElement.style.color = "red"
-            statusElement.innerHTML = "Ошибка сервера."
+            if (data.status) {
+                statusElement.style.display = "block";
+                statusElement.style.color = "green";
+                statusElement.innerHTML = "Вы успешно авторизированы.<br>Вы будете переадресованы на главную страницу.";
+                sessionStorage.setItem("current_user", loginValue);
+                setTimeout(() => {
+                    window.location.href = "./index.html";
+                }, 3000);
+            } else {
+                statusElement.style.display = "block";
+                statusElement.style.color = "red";
+                statusElement.innerHTML = "Неверный логин или пароль.";
+            }
+        } catch (error) {
+            console.error("Ошибка:", error);
+            statusElement.style.display = "block";
+            statusElement.style.color = "red";
+            statusElement.innerHTML = "Ошибка сервера.";
         }
     } else {
-        const statusElement = document.getElementById("is_successful")
-        statusElement.style.display = "block"
+        statusElement.style.display = "block";
         statusElement.style.color = "red";
-        statusElement.innerHTML = "Ошибка входа. Заполните все поля."
-
+        statusElement.innerHTML = "Ошибка входа. Заполните все поля.";
     }
+};
 
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const loginButton = document.querySelector(".login-form button");
+    if (loginButton) {
+        loginButton.addEventListener("click", login);
+    }
+});

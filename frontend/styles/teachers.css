@@ -2,28 +2,76 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-
+    padding: 20px;
 }
+
+/* картоЧКи */
 .card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     background: white;
+    border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin: 10px;
     padding: 20px;
     width: 200px;
-    text-align: center;
+    transition: box-shadow 0.2s ease; /* Плавный переход для тени */
 }
+
+.card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0 0 15px;
+}
+
 .card a {
     text-decoration: none;
-    color: #007BFF;
+    color: #0065d8;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
 }
+
 .card a:hover {
-    color: #0156b0;
+    color: #004ba1;
     text-decoration: underline;
 }
-.textField{
-    width: 50%;
+
+/* контейнер поиска */
+.search-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* поиск */
+.textField {
+    width: 60%;
+    max-width: 500px;
+    padding: 12px 15px;
+    font-size: 1.1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.textField:focus {
+    border-color: #0065d8;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 101, 216, 0.3); /* Свечение при наведении */
+}
+
+/* for мобилки*/
+@media (max-width: 600px) {
+    .textField {
+        width: 80%;
+        font-size: 1em; 
+    }
 }
