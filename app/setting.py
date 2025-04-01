@@ -1,21 +1,29 @@
 import sqlite3
-import config
 import os
+from config import db_name
 
-conn = sqlite3.connect(config.db_name)
-cursor = conn.cursor()
-
-# cursor.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, login VARCHAR(50), password VARCHAR(50))")
-
-cursor.execute("DROP TABLE excercises")
-
-cursor.execute("CREATE TABLE IF NOT EXISTS excercises (id INTEGER PRIMARY KEY, author VARCHAR(50), text TEXT, picture VARCHAR(50), theme VARCHAR(20))")
-
-# cursor.execute("INSERT INTO users (login, password) VALUES ('Vova', 'Vovka')")
-cursor.execute("INSERT INTO excercises (author, text, picture, theme) VALUES ('Admin', 'Test TEXT', 'pic.png', 'tada')")
-
-
-
-conn.commit()
-cursor.close()
-conn.close()
+def init_db():
+    conn = sqlite3.connect(db_name)
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS excercises (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            author TEXT,
+            theme TEXT,
+            text TEXT,
+            image TEXT
+        )
+    """)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            login TEXT UNIQUE,
+            password TEXT
+        )
+    """)
+    conn.commit()
+    conn.close()
+    print(f"Database initialized at: {db_name}")
+    
+if __name__ == "__main__":
+    init_db()

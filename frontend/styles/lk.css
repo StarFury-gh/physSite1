@@ -5,21 +5,35 @@
     justify-content: center;
     align-items: center;
 }
+
 .lk-container {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
+    width: 350px;
+    text-align: left;
 }
+
 .lk-container h2 {
     margin-bottom: 20px;
+    text-align: left;
 }
+
 .lk-container p {
-    font-size: 18px;
-    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
 }
+
+.lk-container p span#user-login {
+    color: #000000;
+    margin-left: 0%;
+}
+
 .logout-button {
     background-color: #d80000;
     color: white;
@@ -29,20 +43,9 @@
     cursor: pointer;
     width: 100%;
 }
+
 .logout-button:hover {
     background-color: #b00000;
-}
-.add_btn{
-    border-radius: 5px;
-    width: 100%;
-    background-color: #00a621;
-
-
-}
-.add_btn:hover{
-    /* background-color: #4caf50; */
-    background-color: green;
-
 }
 
 .new_task_field {
@@ -52,39 +55,157 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
 }
-.task-container {
-    background-color: white;
-    padding: 20px;
+
+form {
+    width: 100%;
+}
+
+/*поля ввода */
+.input-field {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
+    font-size: 16px;
+    box-sizing: border-box;
 }
-.task-container h2 {
-    margin-bottom: 20px;
-}
-.task-container p {
-    font-size: 18px;
-    margin: 10px 0;
-}
-.task-text{
-    overflow: hidden;
-}
-.text_field{
+
+.text_field {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+    box-sizing: border-box;
     height: 120px;
 }
 
-@media (min-width: 601px){
-    .items{
+.input-field:focus,
+.text_field:focus {
+    border-color: #0065d8;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 101, 216, 0.3);
+}
+
+.file-upload-wrapper {
+    position: relative;
+    display: inline-block;
+    width: calc(100% - 20px);
+    margin-top: 5px;
+}
+
+.file-input {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.file-upload-label {
+    display: block;
+    width: 100%;
+    padding: 10px 10px 10px 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #555;
+    text-align: left;
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.file-upload-label::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 16px;
+    border: 1px solid #0065d8;
+    border-radius: 2px;
+    background: transparent;
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 50% 40%, 50% 100%, 0 100%);
+}
+
+.file-upload-label:hover {
+    border-color: #0065d8;
+}
+
+.file-input:focus+.file-upload-label {
+    border-color: #0065d8;
+    box-shadow: 0 0 5px rgba(0, 101, 216, 0.3);
+}
+
+.add_btn {
+    border-radius: 5px;
+    width: 100%;
+    background-color: #00a621;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.add_btn:hover {
+    background-color: green;
+}
+
+@media (min-width: 601px) {
+    .items {
         margin-top: 100px;
         display: flex;
         flex-direction: row;
     }
 }
-@media (max-width: 600){
-    .items{
+
+@media (max-width: 600px) {
+    .items {
         display: flex;
         flex-flow: column wrap;
     }
+
+    .lk-container {
+        width: 90%;
+    }
+
+    .new_task_field {
+        margin-top: 20px;
+        /* отступ для мобилОК */
+    }
+}
+.task-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.cont h2 {
+    margin-bottom: 15px;
+}
+
+.delete-btn {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
 }

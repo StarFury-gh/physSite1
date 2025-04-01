@@ -16,3 +16,76 @@
     width: 300px;
     text-align: center;
 }
+.task-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.text {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.image-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.task-image {
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.view-image-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.view-image-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для модального окна */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    text-align: center;
+}
+
+.modal-content img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.close-btn {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
