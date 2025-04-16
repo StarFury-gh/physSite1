@@ -6,7 +6,6 @@ import uvicorn
 import utils
 import json
 from schemas import Task
-from async_lru import alru_cache
 
 #ну тут функции называются вроде так, что они делают, так что комментарии с пояснением работы функции будут редкими
 
@@ -84,7 +83,6 @@ async def register(user, password, validation_code) -> dict:
             "info": "incorrect validation code"
         }
 
-@alru_cache(maxsize=32)
 @app.get("/get_teachers")
 def get_teachers() -> dict:
 
@@ -96,7 +94,6 @@ def get_teachers() -> dict:
         return {"status": True, "data":teachers}
     return {"status": False, "info":"No teachers in DataBase"}
 
-@alru_cache(maxsize=32)
 @app.get("/get_teacher_by_id/{id}")
 def get_teacher_by_id(id: int):
     conn = sqlite3.connect(config.db_name)
@@ -107,7 +104,6 @@ def get_teacher_by_id(id: int):
     return {"status": False, "info": "No teacher with this id"}
 
 #ну тут уже юзаю Pydantic
-@app.post("/add_task")
 def add_task(task: Task) -> dict:
     
     try:
@@ -125,7 +121,6 @@ def add_task(task: Task) -> dict:
         print(e)
         return {"status": False, "info": "Server error."}
 
-@alru_cache(maxsize=32)
 @app.get("/get_tasks")
 async def get_tasks():
     try:
@@ -148,7 +143,6 @@ def get_task_by_id(id):
     except:
         return {"status": False, "info": "Server error"}
     
-@alru_cache(maxsize=32)
 @app.get("/get_tasks_by_teacher/{teacher}")
 async def get_tasks_by_teacher(teacher):
     conn = sqlite3.connect(config.db_name)
