@@ -1,5 +1,3 @@
-const URL = "http://127.0.0.1:8000"
-
 const id = sessionStorage.getItem("necessaryTeacher")
 
 const setTeacherProfile = () => {
@@ -7,7 +5,7 @@ const setTeacherProfile = () => {
 
     const usernameProfileH = document.getElementById("username")
 
-    fetch(`${URL}/get_teacher_by_id/${id1}`)
+    fetch(`/api/get_teacher_by_id/${id1}`)
     .then(async(response) => await response.json())
     .then((data) => {
         console.log(data)
@@ -38,7 +36,7 @@ function addCard(data) {
 
 const loadTasks = () => {
 
-    fetch(`${URL}/get_tasks_by_teacher/${sessionStorage.getItem("necessaryTeacher")}`)
+    fetch(`/api/get_tasks_by_teacher/${sessionStorage.getItem("necessaryTeacher")}`)
     .then(async(response) => await response.json())
     .then((data) => {
         // console.log(typeof sessionStorage.getItem("necessaryTeacher"))

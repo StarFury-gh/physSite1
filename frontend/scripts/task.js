@@ -3,7 +3,7 @@ const URL = "http://127.0.0.1:8000"
 
 const getTask = () => {
 
-    fetch(`${URL}/get_task_by_id/${sessionStorage.getItem("taskID")}`)
+    fetch(`/api/get_task_by_id/${sessionStorage.getItem("taskID")}`)
     .then(async(response) => await response.json())
     .then((data) => {
         console.log()

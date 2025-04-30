@@ -104,6 +104,7 @@ def get_teacher_by_id(id: int):
     return {"status": False, "info": "No teacher with this id"}
 
 #ну тут уже юзаю Pydantic
+@app.post("/add_task")
 def add_task(task: Task) -> dict:
     
     try:

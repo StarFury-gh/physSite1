@@ -59,7 +59,7 @@ function addCard(id, name) {
 window.addEventListener("load", () => {
 
     try{
-        fetch(`${URL}/get_teachers`)
+        fetch(`/api/get_teachers`)
         .then(async(response) => await response.json())
         .then((data) => {
             console.log(data)

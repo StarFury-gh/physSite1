@@ -18,7 +18,7 @@ const register = async () => {
 
     if(!!login && !!password && !!token){
         try{
-            fetch(`${URL}/register/${login}/${password}/${token}`, {method:"POST"})
+            fetch(`/api/register/${login}/${password}/${token}`, {method:"POST"})
             .then((response) => response.json())
             .then((data) => {
                 

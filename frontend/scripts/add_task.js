@@ -1,5 +1,3 @@
-const URL = "http://127.0.0.1:8000"
-
 document.getElementById("myForm").addEventListener("submit", function(event) {
     event.preventDefault();
 });
@@ -11,7 +9,7 @@ const addTask = () => {
     if(!!taskText && !!taskTheme && !!teacher){
 
         try{
-            fetch(`${URL}/add_task`, {
+            fetch(`/api/add_task`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -10,7 +10,7 @@ const login = async () => {
 
     if(!!login && !!password){
         try{
-            fetch(`${URL}/login/${login}/${password}`)
+            fetch(`/api/login/${login}/${password}`)
             .then(async(response) => await response.json())
             .then((data) => {
                 if(data["status"]){

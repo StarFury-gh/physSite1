@@ -1,5 +1,3 @@
-const URL = "http://127.0.0.1:8000"
-
 console.log(sessionStorage.getItem("taskID"))
 
 
@@ -104,7 +102,7 @@ function addCard(data) {
 window.addEventListener("load", () => {
     let cards = document.getElementById('cardContainer').getElementsByClassName('card').length
     sessionStorage.setItem("start", cards)
-    fetch(`${URL}/get_tasks`)
+    fetch(`/api/get_tasks`)
     .then(async(response) => await response.json())
     .then((data) => {
         if(data["status"]){
