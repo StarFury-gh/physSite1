@@ -2,4 +2,5 @@ app/__pycache__
 app/.idea
 app/venv
 frontend/node_modules
+new_frontend/node_modules
 node_modules
