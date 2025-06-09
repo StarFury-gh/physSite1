@@ -1,0 +1,88 @@
+.field {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.msg {
+    color: green;
+}
+
+.err {
+    color: red;
+}
+
+.input_field {
+    border: none;
+    height: 30px;
+    width: 500px;
+}
+
+.register-form {
+    background-color: white;
+    /* Цвет фона формы */
+    padding: 20px;
+    /* Отступы внутри формы */
+    border-radius: 5px;
+    /* Скругление углов */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Тень для формы */
+    width: 300px;
+    /* Ширина формы */
+}
+
+.register-form h2 {
+    text-align: center;
+    /* Центрирование заголовка */
+    margin-bottom: 20px;
+    /* Отступ снизу */
+}
+
+.regBtn {
+    font-size: 20px;
+}
+
+.register-form input {
+    width: 100%;
+    /* Ширина полей 100% */
+    padding: 10px;
+    /* Отступы внутри полей */
+    margin: 10px 0;
+    /* Отступы сверху и снизу */
+    border: 1px solid #ccc;
+    /* Цвет рамки */
+    border-radius: 5px;
+    /* Скругление углов */
+    box-sizing: border-box;
+    /* Учитываем отступы и рамки в ширине */
+}
+
+.register-form button {
+    background-color: #0065d8;
+    /* Цвет кнопки */
+    color: white;
+    /* Цвет текста кнопки */
+    padding: 10px;
+    /* Отступы внутри кнопки */
+    border: none;
+    /* Убираем рамку */
+    border-radius: 5px;
+    /* Скругление углов */
+    cursor: pointer;
+    /* Указатель при наведении */
+    width: 100%;
+    /* Ширина кнопки 100% */
+}
+
+.register-form button:hover {
+    background-color: #0042c5;
+    /* Цвет кнопки при наведении */
+}
+
+#is_successful {
+    display: none;
+    text-align: center;
+}

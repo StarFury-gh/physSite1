@@ -5,7 +5,7 @@ import config
 import uvicorn
 import utils
 import json
-from schemas import Task
+from schemas import Task, User, NewUser
 
 #ну тут функции называются вроде так, что они делают, так что комментарии с пояснением работы функции будут редкими
 
@@ -26,11 +26,11 @@ app.add_middleware(
 async def test():
     return {"message": "hello"}
 
-@app.get("/login/{user}/{password}")
-async def login(user, password) -> dict:
+@app.post("/login")
+async def login(user: User) -> dict:
     conn = sqlite3.connect(config.db_name)
     cursor = conn.cursor()
-    picked_data = cursor.execute(f"SELECT * FROM users WHERE (login='{user}' AND password='{password}')").fetchall()
+    picked_data = cursor.execute(f"SELECT * FROM users WHERE (login='{user.login}' AND password='{user.password}')").fetchall()
 
     if utils.isExists(picked_data):
         cursor.close()
@@ -50,12 +50,12 @@ async def login(user, password) -> dict:
         }
 
 #тут по-хорошему переделать на Pydantic схему, но мне лень
-@app.post("/register/{user}/{password}/{validation_code}")
-async def register(user, password, validation_code) -> dict:
-    if(validation_code == 'teacher_account'):    
+@app.post("/register")
+async def register(user: NewUser) -> dict:
+    if(user.validation_code == 'teacher_account'):    
         conn = sqlite3.connect(config.db_name)
         cursor = conn.cursor()
-        picked_data = cursor.execute(f"SELECT * FROM users WHERE (login='{user}')").fetchall()
+        picked_data = cursor.execute(f"SELECT * FROM users WHERE (login='{user.login}')").fetchall()
 
         if utils.isExists(picked_data):
             cursor.close()
@@ -67,7 +67,7 @@ async def register(user, password, validation_code) -> dict:
             }
 
         else:
-            cursor.execute(f"INSERT INTO users (login, password) VALUES ('{user}', '{password}')")
+            cursor.execute(f"INSERT INTO users (login, password) VALUES ('{user.login}', '{user.password}')")
             conn.commit()
             cursor.close()
             conn.close()
@@ -76,7 +76,7 @@ async def register(user, password, validation_code) -> dict:
                 "code": 200
             }
 
-    else:
+    else:   
         return {
             "status": False, 
             "code": 400, 
