@@ -3,25 +3,44 @@ import { useEffect, useState } from "react";
 import { API_URL } from "../../constants";
 import Card from "./Card";
 
-export default function TasksPage({ compSetter, idSetter }) {
+export default function TasksPage({ compSetter }) {
     const [tasks, setTasks] = useState([])
+    const [necessaryTaskId, setNecessaryTaskID] = useState("")
+    const cards = tasks.map((el) => {
+        return <Card key={`${el[3]}`} title={el[1]} author={el[0]} id={el[3]} compSetter={compSetter} />
+    })
+    const [tasksCards, setTasksCard] = useState(cards)
+
+    const handleInputValueChange = (e) => {
+        setNecessaryTaskID(e.target.value)
+    }
 
     useEffect(() => {
-        const resp = axios.get(`${API_URL}/get_tasks`)
+        axios.get(`${API_URL}/get_tasks`)
             .then(r => {
                 setTasks(r.data.tasks)
             })
     }, [])
 
-    const cards = tasks.map((el) => {
-        return <Card key={`${el[3]}`} title={el[1]} author={el[0]} id={el[3]} compSetter={compSetter} idSetter={idSetter} />
-    })
+    useEffect(()=>{
+        const tasksCard = tasks.map((el) => {
+            if(String(el[3]).includes(necessaryTaskId)){
+                return <Card key={`${el[3]}`} title={el[1]} author={el[0]} id={el[3]} compSetter={compSetter} />
+            }
+            else{
+                return
+            }
+        })
+        setTasksCard(tasksCard)
+    },[compSetter, necessaryTaskId, tasks])
+
+    
 
     return (
         <div className="flex flex-col items-center">
-            <input className="border-2 border-blue-400 outline-0 px-2 py-1 my-5" type="text" placeholder="Найти задачу по номеру" />
+            <input onChange={(e) => handleInputValueChange(e)} className="border-2 border-blue-400 outline-0 px-2 py-1 my-5 rounded-lg" type="text" placeholder="Найти задачу по номеру" />
             <div className="flex w-full flex-row flex-wrap justify-around">
-                {cards}
+                {tasksCards}
             </div>
         </div>
     )

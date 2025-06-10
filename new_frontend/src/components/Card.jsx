@@ -12,7 +12,7 @@ export default function Card(props) {
     }
 
     return (
-        <div className="bg-white border-0 rounded-lg flex flex-col items-center justify-center px-10 py-5 w-100 my-2">
+        <div className="bg-white border-1 border-neutral-200 rounded-lg flex flex-col items-center justify-center px-10 py-5 w-100 my-2">
             <h2 className="font-bold text-2xl">{props.title}</h2>
             <h4 className="text-2xl">{props.author}</h4>
             <h5>ID: {props.id}</h5>

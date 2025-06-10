@@ -152,7 +152,7 @@ async def get_tasks_by_teacher(teacher):
     tasks = cursor.execute(f"SELECT id, theme FROM excercises WHERE (author='{teachersName[0]}')").fetchall()
     
     if tasks:
-        return {"status": True, "tasks": tasks}
+        return {"status": True, "tasks": tasks, "teacherName": teachersName }
     return {"status": False, "info": "No tasks by this teacher"}
 
 if __name__ == "__main__":
