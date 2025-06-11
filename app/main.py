@@ -89,7 +89,6 @@ def get_teachers() -> dict:
     conn = sqlite3.connect(config.db_name)
     cursor = conn.cursor()
     teachers = cursor.execute("SELECT id, login FROM users").fetchall()
-    print(teachers)
     if teachers:
         return {"status": True, "data":teachers}
     return {"status": False, "info":"No teachers in DataBase"}
@@ -111,7 +110,6 @@ def add_task(task: Task) -> dict:
         task_teacher = task.teacher
         task_text = task.task_text
         task_theme = task.theme
-        print(task_theme, task_text, task_teacher, sep="\t")
         conn = sqlite3.connect(config.db_name)
         cursor = conn.cursor()
         cursor.execute(f"INSERT INTO excercises (author, text, theme) VALUES ('{task_teacher}', '{task_text}', '{task_theme}')")
@@ -152,8 +150,8 @@ async def get_tasks_by_teacher(teacher):
     tasks = cursor.execute(f"SELECT id, theme FROM excercises WHERE (author='{teachersName[0]}')").fetchall()
     
     if tasks:
-        return {"status": True, "tasks": tasks, "teacherName": teachersName }
-    return {"status": False, "info": "No tasks by this teacher"}
+        return {"status": True, "tasks": tasks, "teacherName": teachersName[0] }
+    return {"status": False, "info": "No tasks by this teacher", "teacherName": teachersName[0], "tasks": []}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", port=8000, host="0.0.0.0")

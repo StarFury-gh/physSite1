@@ -2,13 +2,9 @@ import "../styles/card.css"
 
 export default function Card(props) {
 
-    const setComponent = props.compSetter
-    const setTaskId = props.idSetter
-
     const handleClick = (id) => {
         sessionStorage.setItem("current_task", id)
-        setComponent("currentTask")
-        setTaskId(id)
+        window.location.href = "/task"
     }
 
     return (

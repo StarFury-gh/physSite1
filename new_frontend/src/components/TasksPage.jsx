@@ -22,19 +22,19 @@ export default function TasksPage({ compSetter }) {
             })
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         const tasksCard = tasks.map((el) => {
-            if(String(el[3]).includes(necessaryTaskId)){
-                return <Card key={`${el[3]}`} title={el[1]} author={el[0]} id={el[3]} compSetter={compSetter} />
+            if (String(el[3]).includes(necessaryTaskId)) {
+                return <Card key={`${el[3]}`} title={el[1]} author={el[0]} id={el[3]} />
             }
-            else{
+            else {
                 return
             }
         })
         setTasksCard(tasksCard)
-    },[compSetter, necessaryTaskId, tasks])
+    }, [compSetter, necessaryTaskId, tasks])
 
-    
+
 
     return (
         <div className="flex flex-col items-center">

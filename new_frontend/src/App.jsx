@@ -8,26 +8,27 @@ import TasksPage from "./components/TasksPage"
 import CurrentTask from "./components/CurrentTask"
 import TeachersPage from "./components/TeachersPage"
 import CurrentTeacherPage from "./components/CurrentTeacherPage"
+import NotFound from "./components/NotFound"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 export default function App() {
 
-  const [currentComponent, setCurrentComponent] = useState("main")
-
-  const components = {
-    "main": <MainPage />,
-    "login": <Login />,
-    "register": <Register />,
-    "excercises": <TasksPage compSetter={setCurrentComponent} />,
-    "teachers": <TeachersPage compSetter={setCurrentComponent}/>,
-    "lk": <PersonalPage />,
-    "currentTask": <CurrentTask />,
-    "teacher_page": <CurrentTeacherPage/>
-  }
-
   return (
     <div className="">
-      <Header setter={setCurrentComponent} />
-      {currentComponent && components[currentComponent]}
+      <Header />
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/tasks" element={<TasksPage />} />
+          <Route path="/task" element={<CurrentTask />}></Route>
+          <Route path="/teachers" element={<TeachersPage />} />
+          <Route path="/teacher" element={<CurrentTeacherPage />} />
+          <Route path="/lk" element={<PersonalPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </div>
   )
 }

@@ -22,7 +22,7 @@ export default function Login() {
                 setMsg("Вы успешно вошли в аккаунт. Страница будет обновлена автоматически.")
                 sessionStorage.setItem("current_user", login)
                 setTimeout(() => {
-                    window.location.reload()
+                    window.location.href = "/"
                 }, 3000)
             } else {
                 setMsg("")
