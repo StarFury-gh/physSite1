@@ -8,8 +8,8 @@ import CurrentTask from "./components/CurrentTask"
 import TeachersPage from "./components/TeachersPage"
 import CurrentTeacherPage from "./components/CurrentTeacherPage"
 import NotFound from "./components/NotFound"
-import { TestComponent } from "./components/TestComponents"
 import TestsPage from "./components/TestsPage"
+import TestPage from "./components/TestPage"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 export default function App() {
@@ -27,7 +27,8 @@ export default function App() {
           <Route path="/teachers" element={<TeachersPage />} />
           <Route path="/teacher" element={<CurrentTeacherPage />} />
           <Route path="/lk" element={<PersonalPage />} />
-          <Route path="tests" element={<TestsPage/>}/>
+          <Route path="tests" element={<TestsPage />} />
+          <Route path="test" element={<TestPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

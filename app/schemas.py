@@ -20,8 +20,9 @@ class User(BaseModel):
 
 class NewTest(BaseModel):
 	author: str
-	tasks: str
 	answers: str
+	tasks: str
+	title: str
 
 
 class Test(BaseModel):

@@ -169,12 +169,19 @@ async def get_tests():
     resp = testsModule.get_tests()
     return resp
 
+
 @app.post("/add_test")
 async def add_new_test(test: NewTest):
-    resp = testsModule.add_new_test(test.author, test.tasks, test.answers)
+    resp = testsModule.add_new_test(test.author, test.tasks, test.answers, test.title)
     if resp:
         return {"status": True}
     return {"status": False, "info": "Server error"}
+
+
+@app.get("/get_test_by_id/{test_id}")
+async def get_test_by_id(test_id):
+    resp = testsModule.get_test_by_id(test_id)
+    return resp
 
 if __name__ == "__main__":
     uvicorn.run("main:app", port=8000, host="0.0.0.0")

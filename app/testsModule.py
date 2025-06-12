@@ -20,14 +20,15 @@ class Test(Base):
     author = Column(String)
     tasks = Column(String)
     answers = Column(String)
+    title = Column(String)
 
     def get_test_info(self):
         tasks = self.tasks.split("|||")
         answers = self.answers.split("|||")
-        return {"author": self.author, "tasks": tasks, "answers": answers, "id": self.id}
+        return {"author": self.author, "tasks": tasks, "answers": answers, "id": self.id, "title": self.title}
 
     def __repr__(self):
-        return f"<Test(author={self.author}, tasks={self.tasks}, answers={self.answers})>"
+        return f"<Test(author={self.author}, tasks={self.tasks}, answers={self.answers}, title={self.title}, id: {self.id})>"
 
 
 def get_test_info(test: Test):
@@ -36,9 +37,9 @@ def get_test_info(test: Test):
     return {"author": test.author, "tasks": tasks, "answers": answers}
 
 
-def add_new_test(author, tasks, answers):
+def add_new_test(author, tasks, answers, title):
     try:
-        new_test = Test(author=author, tasks=tasks, answers=answers)
+        new_test = Test(author=author, tasks=answers, answers=tasks, title=title)
         session.add(new_test)
         session.commit()
         return True
@@ -49,7 +50,6 @@ def add_new_test(author, tasks, answers):
 def get_test_by_id(id):
     test = session.query(Test).filter(Test.id == id).first()
     if test:
-        print("test:", test)
         test_info = test.get_test_info()
         return test_info
     return {}
@@ -74,6 +74,3 @@ def get_tests():
     tests = session.query(Test).all()
     result = [t.get_test_info() for t in tests]
     return result
-
-
-print("get_tests:", get_tests())
