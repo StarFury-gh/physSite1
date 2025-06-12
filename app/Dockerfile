@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install fastapi uvicorn
+RUN pip install fastapi uvicorn SQLAlchemy
 
 RUN python setting.py
 

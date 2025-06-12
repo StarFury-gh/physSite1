@@ -1,25 +1,38 @@
-import sqlite3
-import config
-import utils
-import json
-def get_teachers():
-    conn = sqlite3.connect(config.db_name)
-    cursor = conn.cursor()
-    teachers = cursor.execute("SELECT login FROM users").fetchall()
-    # print(list(teachers))
-    result = [el[0] for el in list(teachers)]
-    # print(result)
-    if(utils.isExists(result)):
-        return {
-            "status": True,
-            "code": 200,
-            "teachers": result
-        }
-    else:
-        return {
-            "status": False,
-            "code": 400,
-            "info": "no teachers yet."
-        }
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, relationship
 
-print(get_teachers())
+# Движок + подключение к бд
+engine = create_engine("sqlite:///database.db", echo=True)
+
+# Базовый класс для декларативного описания таблиц
+Base = declarative_base()
+
+# Создание сессии
+Session = sessionmaker(bind=engine)
+session = Session()
+
+
+class Test(Base):
+    __tablename__ = "tests"
+
+    id = Column(Integer, primary_key=True)
+    author = Column(String)
+    tasks = Column(String)
+    answers = Column(String)
+
+    def __repr__(self):
+        return f"<Test(author={self.author}, tasks={self.tasks}, answers={self.answers})>"
+
+def get_test_info(test):
+    tasks = test.tasks.split("|||")
+    answers = test.answers.split("|||")
+    return {"author": test.author, "tasks": tasks, "answers": answers}
+
+# new_test = Test(author="Владимир", tasks="1|||2|||3", answers="3|||2|||1")
+# session.add(new_test)
+all_tests = session.query(Test).all()
+print("data:", all_tests)
+print(get_test_info(all_tests[0]))
+
+# session.commit()

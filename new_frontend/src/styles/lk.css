@@ -54,7 +54,6 @@
 
 .new_task_field {
     width: 100%;
-    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -101,7 +100,9 @@
 
 @media (max-width: 600) {
     .items {
+        height: 100%;
         display: flex;
         flex-flow: column wrap;
+        justify-content: space-between;
     }
 }

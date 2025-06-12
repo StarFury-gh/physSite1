@@ -1,19 +1,19 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../styles/lk.css"
+import { TaskConstructor, TestConstructor } from "./Costructors";
 
 export default function PersonalPage() {
 
-    const [taskTheme, setTaskTheme] = useState("")
-    const [taskText, setTaskText] = useState("")
+    const [taskType, setTaskType] = useState("test")
 
+    const elements = {
+        "task": <TaskConstructor />,
+        "test": <TestConstructor/>
+    }
 
     const logout = () => {
         sessionStorage.setItem("current_user", null)
-        window.location.reload()
-    }
-    const addTask = () => {
-
+        window.location.href = "/"
     }
 
     return (
@@ -26,17 +26,14 @@ export default function PersonalPage() {
                 </div>
             </div>
             <div className="new_task_field">
-                <div className="lk-container ">
-                    <form id="myForm" action="">
-                        <h2 className="text-2xl">Добавить задание</h2>
-                        <div className="">
-                            <p className="text-2xl font-bold">Тема:</p>
-                            <input className="border-1 outline-0 border-blue-400 px-4 py-2 rounded-lg" value={taskTheme} onChange={(e) => setTaskTheme(e.target.value)} id="task-theme-input" type="text" required />
-                            <p className="text-2xl font-bold">Текст задачи:</p>
-                            <textarea value={taskText} onChange={(e) => setTaskText(e.target.value)} type="text" id="task-text-input" className="text_field border-1 outline-0 border-blue-400 px-4 py-2 rounded-lg" />
-                        </div>
-                        <button onClick={addTask} className="add_btn" id="addTaskBtn">Добавить</button>
-                    </form>
+                <div className="flex flex-col">
+                    <div className="flex flex-row justify-around">
+                        <button onClick={() => setTaskType("test")} className={`w-30 border-0 rounded-lg text-white ${taskType == "task" ? 'bg-blue-400' : 'bg-blue-600'} py-1 my-3`}>Тест</button>
+                        <button onClick={() => setTaskType("task")} className={`w-30 border-0 rounded-lg text-white ${taskType == "test" ? 'bg-blue-400' : 'bg-blue-600'} py-1 my-3`}>Задача</button>
+                    </div>
+                    <div className="lk-container">
+                        {elements[taskType]}
+                    </div>
                 </div>
                 <h1 className="message" id="messageH"></h1>
             </div >

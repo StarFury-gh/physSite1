@@ -1,6 +1,6 @@
 import "../styles/header.css"
 
-export default function Header(props) {
+export default function Header() {
     const currentUser = sessionStorage.getItem("current_user")
     const handleClick = (path) => {
         window.location.href = `/${path}`
@@ -11,6 +11,8 @@ export default function Header(props) {
                 <button onClick={() => { handleClick("") }} className="button">Главная</button>
                 <button onClick={() => { handleClick("teachers") }} className="button">Преподаватели</button>
                 <button onClick={() => { handleClick("tasks") }} className="button">Задачи</button>
+                <button onClick={() => { handleClick("tests") }} className="button">Тесты</button>
+
                 {(currentUser === String(null) || currentUser === null) ?
                     <>
                         <button id="log_btn" onClick={() => { handleClick("login") }} className="button">Войти</button>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { API_URL } from "../../constants"
 import Card from "./Card"
 
-export default function CurrentTeacherPage({ compSetter }) {
+export default function CurrentTeacherPage() {
     const [teacherData, setTeacherData] = useState([])
     const [tasks, setTasks] = useState([])
     const crds = tasks.map(el => {
